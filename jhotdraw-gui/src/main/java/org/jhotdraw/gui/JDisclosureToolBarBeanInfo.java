@@ -150,7 +150,7 @@ public class JDisclosureToolBarBeanInfo extends SimpleBeanInfo {
    * @return An image object representing the requested icon. May return null if no suitable icon is
    *     available.
    */
-  public java.awt.Image loadImage(String iconName, java.awt.Image icon) {
+  public java.awt.Image getImageOrLoadIfNecessary(String iconName, java.awt.Image icon) {
     if (iconName == null) {
       return null;
     }
@@ -164,16 +164,16 @@ public class JDisclosureToolBarBeanInfo extends SimpleBeanInfo {
   public java.awt.Image getIcon(int iconKind) {
     switch (iconKind) {
       case ICON_COLOR_16x16:
-        iconColor16 = loadImage(iconNameC16, iconColor16);
+        iconColor16 = getImageOrLoadIfNecessary(iconNameC16, iconColor16);
         return iconColor16;
       case ICON_COLOR_32x32:
-        iconColor32 = loadImage(iconNameC32, iconColor32);
+        iconColor32 = getImageOrLoadIfNecessary(iconNameC32, iconColor32);
         return iconColor32;
       case ICON_MONO_16x16:
-        iconMono16 = loadImage(iconNameM16, iconMono16);
+        iconMono16 = getImageOrLoadIfNecessary(iconNameM16, iconMono16);
         return iconMono16;
       case ICON_MONO_32x32:
-        iconMono32 = loadImage(iconNameM32, iconMono32);
+        iconMono32 = getImageOrLoadIfNecessary(iconNameM32, iconMono32);
         return iconMono32;
       default:
         return null;
