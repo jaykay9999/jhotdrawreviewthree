@@ -117,83 +117,83 @@ public class TriangleFigure extends AbstractAttributedFigure {
     Rectangle2D.Double r = (Rectangle2D.Double) rectangle.clone();
     BezierPath triangle = new BezierPath();
 
-    double x1, y1, x2, y2, x3, y3;
+    double leftX, leftY, rightX, rightY, topX, topY;
 
     switch (attr().get(ORIENTATION)) {
-      case NORTH:
-      default:
-        x1 = r.x + (r.width / 2f);
-        y1 = r.y;
-        x2 = r.width + r.x;
-        y2 = r.height + r.y;
-        x3 = r.x;
-        y3 = r.height + r.y;
-        break;
-      case NORTH_EAST:
-        x1 = r.x;
-        y1 = r.y;
-        x2 = r.width + r.x;
-        y2 = r.y;
-        x3 = r.width + r.x;
-        y3 = r.height + r.y;
-        break;
-      case EAST:
-        x1 = r.x;
-        y1 = r.y;
-        x2 = r.width + r.x;
-        y2 = r.y + (r.height / 2f);
-        x3 = r.x;
-        y3 = r.height + r.y;
-        break;
-      case SOUTH_EAST:
-        x1 = r.width + r.x;
-        y1 = r.y;
-        x2 = r.width + r.x;
-        y2 = r.height + r.y;
-        x3 = r.x;
-        y3 = r.height + r.y;
-        break;
-      case SOUTH:
-        x1 = r.x + (r.width / 2f);
-        y1 = r.height + r.y;
-        x2 = r.x;
-        y2 = r.y;
-        x3 = r.width + r.x;
-        y3 = r.y;
-        break;
-      case SOUTH_WEST:
-        x1 = r.width + r.x;
-        y1 = r.height + r.y;
-        x2 = r.x;
-        y2 = r.height + r.y;
-        x3 = r.x;
-        y3 = r.y;
-        break;
-      case WEST:
-        x1 = r.x;
-        y1 = r.y + (r.height / 2f);
-        x2 = r.width + r.x;
-        y2 = r.y;
-        x3 = r.width + r.x;
-        y3 = r.height + r.y;
-        break;
-      case NORTH_WEST:
-        x1 = r.x;
-        y1 = r.height + r.y;
-        x2 = r.x;
-        y2 = r.y;
-        x3 = r.width + r.x;
-        y3 = r.y;
-        break;
+        case NORTH:
+        default:
+            leftX = r.x + (r.width / 2f);
+            leftY = r.y;
+            rightX = r.width + r.x;
+            rightY = r.height + r.y;
+            topX = r.x;
+            topY = r.height + r.y;
+            break;
+        case NORTH_EAST:
+            leftX = r.x;
+            leftY = r.y;
+            rightX = r.width + r.x;
+            rightY = r.y;
+            topX = r.width + r.x;
+            topY = r.height + r.y;
+            break;
+        case EAST:
+            leftX = r.x;
+            leftY = r.y;
+            rightX = r.width + r.x;
+            rightY = r.y + (r.height / 2f);
+            topX = r.x;
+            topY = r.height + r.y;
+            break;
+        case SOUTH_EAST:
+            leftX = r.width + r.x;
+            leftY = r.y;
+            rightX = r.width + r.x;
+            rightY = r.height + r.y;
+            topX = r.x;
+            topY = r.height + r.y;
+            break;
+        case SOUTH:
+            leftX = r.x + (r.width / 2f);
+            leftY = r.height + r.y;
+            rightX = r.x;
+            rightY = r.y;
+            topX = r.width + r.x;
+            topY = r.y;
+            break;
+        case SOUTH_WEST:
+            leftX = r.width + r.x;
+            leftY = r.height + r.y;
+            rightX = r.x;
+            rightY = r.height + r.y;
+            topX = r.x;
+            topY = r.y;
+            break;
+        case WEST:
+            leftX = r.x;
+            leftY = r.y + (r.height / 2f);
+            rightX = r.width + r.x;
+            rightY = r.y;
+            topX = r.width + r.x;
+            topY = r.height + r.y;
+            break;
+        case NORTH_WEST:
+            leftX = r.x;
+            leftY = r.height + r.y;
+            rightX = r.x;
+            rightY = r.y;
+            topX = r.width + r.x;
+            topY = r.y;
+            break;
     }
 
-    triangle.moveTo(x1, y1);
-    triangle.lineTo(x2, y2);
-    triangle.lineTo(x3, y3);
+    triangle.moveTo(leftX, leftY);
+    triangle.lineTo(rightX, rightY);
+    triangle.lineTo(topX, topY);
 
     triangle.setClosed(true);
     return triangle;
-  }
+}
 
   @Override
   public boolean contains(Point2D.Double p, double scaleDenominator) {
