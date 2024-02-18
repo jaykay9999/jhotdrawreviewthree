@@ -169,15 +169,14 @@ public class BezierFigure extends AbstractAttributedFigure {
     }
   }
 
-  @Override
-  public boolean contains(Point2D.Double p, double scaleDenominator) {
-    boolean result = false;
-    double tolerance =
-        Math.max(1f, 2 * AttributeKeys.getPerpendicularHitGrowth(this, scaleDenominator));
-    if (isClosed() || attr().get(FILL_COLOR) != null && attr().get(UNCLOSED_PATH_FILLED)) {
-      if (path.contains(p)) {
-        result = true;
-      }
+@Override
+public boolean contains(Point2D.Double p, double scaleDenominator) {
+    double tolerance = Math.max(1f, 2 * AttributeKeys.getPerpendicularHitGrowth(this, scaleDenominator));
+
+    if (isClosed() || (attr().get(FILL_COLOR) != null && attr().get(UNCLOSED_PATH_FILLED))) {
+        if (path.contains(p)) {
+            return true;
+        }
       double grow = tolerance;
       GrowStroke gs =
           new GrowStroke(
@@ -185,40 +184,30 @@ public class BezierFigure extends AbstractAttributedFigure {
               AttributeKeys.getStrokeTotalWidth(this, scaleDenominator)
                   * attr().get(STROKE_MITER_LIMIT));
       if (gs.createStrokedShape(path).contains(p)) {
-        result = true;
-      } else {
-        if (isClosed()) {
-          return false;
+            return true;
         }
-      }
-    } else if (!isClosed()) {
-      if (getCappedPath(scaleDenominator).outlineContains(p, tolerance)) {
-        result = true;
-      }
-      if (attr().get(START_DECORATION) != null) {
-        BezierPath cp = getCappedPath(scaleDenominator);
-        Point2D.Double p1 = path.get(0, 0);
-        Point2D.Double p2 = cp.get(0, 0);
-        // FIXME - Check here, if caps path contains the point
-        if (Geom.lineContainsPoint(p1.x, p1.y, p2.x, p2.y, p.x, p.y, tolerance)) {
-          result = true;
-        }
-      }
-      if (attr().get(END_DECORATION) != null) {
-        BezierPath cp = getCappedPath(scaleDenominator);
-        Point2D.Double p1 = path.get(path.size() - 1, 0);
-        Point2D.Double p2 = cp.get(path.size() - 1, 0);
-        // FIXME - Check here, if caps path contains the point
-        if (Geom.lineContainsPoint(p1.x, p1.y, p2.x, p2.y, p.x, p.y, tolerance)) {
-          result = true;
-        }
-      }
-    } else {
 
-      return false;
+        if (isClosed()) {
+            return false;
+        }
+    } else if (!isClosed()) {
+        if (getCappedPath(scaleDenominator).outlineContains(p, tolerance)) {
+            return true;
+        }
+
+        if (attr().get(START_DECORATION) != null || attr().get(END_DECORATION) != null) {
+            BezierPath cp = getCappedPath(scaleDenominator);
+            Point2D.Double p1 = path.get(0, 0);
+            Point2D.Double p2 = cp.get(attr().get(END_DECORATION) != null ? path.size() - 1 : 0, 0);
+
+            if (Geom.lineContainsPoint(p1.x, p1.y, p2.x, p2.y, p.x, p.y, tolerance)) {
+                return true;
+            }
+        }
     }
-    return result;
-  }
+
+    return false;
+}
 
   @Override
   public Collection<Handle> createHandles(int detailLevel) {
