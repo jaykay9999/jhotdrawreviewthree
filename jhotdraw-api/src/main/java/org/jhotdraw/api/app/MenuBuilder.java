@@ -59,182 +59,182 @@ public interface MenuBuilder {
    * with ID {@code ExitAction.ID} from the action map of the {@code ApplicationModel} and adds it
    * to the "Application" menu.
    *
-   * @param m
-   * @param app
-   * @param v
+   * @param menu
+   * @param application
+   * @param viewMenu
    */
-  void addExitItems(JMenu m, Application app, View v);
+  void addExitItems(JMenu menu, Application application, View viewMenu);
 
   /**
    * Optionally adds one or more "Clear File" items to a menu.
    *
-   * @param m
-   * @param app
-   * @param v
+   * @param menu
+   * @param application
+   * @param viewMenu
    */
-  void addClearFileItems(JMenu m, Application app, View v);
+  void addClearFileItems(JMenu menu, Application application, View viewMenu);
 
   /**
    * Optionally adds one or more "New Window" items to a menu.
    *
-   * @param m
-   * @param app
-   * @param v
+   * @param menu
+   * @param application
+   * @param viewMenu
    */
-  void addNewWindowItems(JMenu m, Application app, View v);
+  void addNewWindowItems(JMenu menu, Application application, View viewMenu);
 
   /**
    * Optionally adds one or more "New File" items to a menu.
    *
-   * @param m
-   * @param app
-   * @param v
+   * @param menu
+   * @param application
+   * @param viewMenu
    */
-  void addNewFileItems(JMenu m, Application app, View v);
+  void addNewFileItems(JMenu menu, Application application, View viewMenu);
 
   /**
    * Optionally adds one or more "Load file" items to a menu.
    *
-   * @param m
-   * @param app
-   * @param v
+   * @param menu
+   * @param application
+   * @param viewMenu
    */
-  void addLoadFileItems(JMenu m, Application app, View v);
+  void addLoadFileItems(JMenu menu, Application application, View viewMenu);
 
   /**
    * Optionally adds one or more "Open File" items to a menu.
    *
-   * @param m
-   * @param app
-   * @param v
+   * @param menu
+   * @param application
+   * @param viewMenu
    */
-  void addOpenFileItems(JMenu m, Application app, View v);
+  void addOpenFileItems(JMenu menu, Application application, View viewMenu);
 
   /**
    * Optionally adds one or more "Close File" items to a menu.
    *
-   * @param m
-   * @param app
-   * @param v
+   * @param menu
+   * @param application
+   * @param viewMenu
    */
-  void addCloseFileItems(JMenu m, Application app, View v);
+  void addCloseFileItems(JMenu menu, Application application, View viewMenu);
 
   /**
    * Optionally adds one or more "Save File" items to a menu.
    *
-   * @param m
-   * @param app
-   * @param v
+   * @param menu
+   * @param application
+   * @param viewMenu
    */
-  void addSaveFileItems(JMenu m, Application app, View v);
+  void addSaveFileItems(JMenu menu, Application application, View viewMenu);
 
   /**
    * Optionally adds one or more "Export File" items to a menu.
    *
-   * @param m
-   * @param app
-   * @param v
+   * @param menu
+   * @param application
+   * @param viewMenu
    */
-  void addExportFileItems(JMenu m, Application app, View v);
+  void addExportFileItems(JMenu menu, Application application, View viewMenu);
 
   /**
    * Optionally adds one or more "Print File" items to a menu.u.
    *
-   * @param m
-   * @param app
-   * @param v
+   * @param menu
+   * @param application
+   * @param viewMenu
    */
-  void addPrintFileItems(JMenu m, Application app, View v);
+  void addPrintFileItems(JMenu menu, Application application, View viewMenu);
 
   /**
    * Optionally adds one or more file related items to a menu.
    *
-   * @param m
-   * @param app
-   * @param v
+   * @param menu
+   * @param application
+   * @param viewMenu
    */
-  void addOtherFileItems(JMenu m, Application app, View v);
+  void addOtherFileItems(JMenu menu, Application application, View viewMenu);
 
   /**
    * Optionally adds one or more "Undo" items to a menu.
    *
-   * @param m
-   * @param app
-   * @param v
+   * @param menu
+   * @param application
+   * @param viewMenu
    */
-  void addUndoItems(JMenu m, Application app, View v);
+  void addUndoItems(JMenu menu, Application application, View viewMenu);
 
   /**
    * Optionally adds one or more "Clipboard" items to a menu.
    *
-   * @param m
-   * @param app
-   * @param v
+   * @param menu
+   * @param application
+   * @param viewMenu
    */
-  void addClipboardItems(JMenu m, Application app, View v);
+  void addClipboardItems(JMenu menu, Application application, View viewMenu);
 
   /**
    * Optionally adds one or more "Selection" items to a menu.
    *
-   * @param m
-   * @param app
-   * @param v
+   * @param menu
+   * @param application
+   * @param viewMenu
    */
-  void addSelectionItems(JMenu m, Application app, View v);
+  void addSelectionItems(JMenu menu, Application application, View viewMenu);
 
   /**
    * Optionally adds one or more "Find" items to a menu.
    *
-   * @param m
-   * @param app
-   * @param v
+   * @param menu
+   * @param application
+   * @param viewMenu
    */
-  void addFindItems(JMenu m, Application app, View v);
+  void addFindItems(JMenu menu, Application application, View viewMenu);
 
   /**
    * Optionally adds one or more editing related items to a menu.
    *
-   * @param m
-   * @param app
-   * @param v
+   * @param menu
+   * @param application
+   * @param viewMenu
    */
-  void addOtherEditItems(JMenu m, Application app, View v);
+  void addOtherEditItems(JMenu menu, Application application, View viewMenu);
 
   /**
    * Optionally adds one or more view related items to a menu.
    *
-   * @param m
-   * @param app
-   * @param v
+   * @param menu
+   * @param application
+   * @param viewMenu
    */
-  void addOtherViewItems(JMenu m, Application app, View v);
+  void addOtherViewItems(JMenu menu, Application application, View viewMenu);
 
   /**
    * Optionally adds one or more additional menus to a menu bar or a pop up menu.
    *
-   * @param m A (potentially non-empty) list of menus.
-   * @param app
-   * @param v
+   * @param menus A (potentially non-empty) list of menus.
+   * @param application
+   * @param viewMenu
    */
-  void addOtherMenus(List<JMenu> m, Application app, View v);
+  void addOtherMenus(List<JMenu> menus, Application application, View viewMenu);
 
   /**
    * Optionally adds one or more window related items to a menu.
    *
-   * @param m
-   * @param app
-   * @param v
+   * @param menu
+   * @param application
+   * @param viewMenu
    */
-  void addOtherWindowItems(JMenu m, Application app, View v);
+  void addOtherWindowItems(JMenu menu, Application application, View viewMenu);
 
   /**
    * Optionally adds one or more "Help" items to a menu.
    *
-   * @param m
-   * @param app
-   * @param v
+   * @param menu
+   * @param application
+   * @param viewMenu
    */
-  void addHelpItems(JMenu m, Application app, View v);
+  void addHelpItems(JMenu menu, Application application, View viewMenu);
 
   /**
    * Optionally adds one or more "About" items to a menu.
@@ -243,9 +243,10 @@ public interface MenuBuilder {
    * with ID {@code AboutAction.ID} from the action map of the {@code ApplicationModel} and adds it
    * to the "Application" menu.
    *
-   * @param m
-   * @param app
-   * @param v
+   * @param menu
+   * @param application
+   * @param viewMenu
    */
-  void addAboutItems(JMenu m, Application app, View v);
+  void addAboutItems(JMenu menu, Application application, View viewMenu);
 }
+
