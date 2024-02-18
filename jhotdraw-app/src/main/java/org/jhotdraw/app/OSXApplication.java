@@ -388,33 +388,33 @@ public class OSXApplication extends AbstractApplication {
     // Create missing standard menus
     if (fileMenu == null) {
       fileMenu = createFileMenu(v);
-    } else {
-      mb.add(fileMenu, 0);
     }
+      mb.add(fileMenu, 0);
+    
 
     if (editMenu == null) {
       editMenu = createEditMenu(v);
-    } else {
+    } 
       mb.add(editMenu, Math.min(1, mb.getComponentCount()));
-    }
+   
 
     if (viewMenu == null) {
       viewMenu = createViewMenu(v);
-    } else {
+    } 
       mb.add(viewMenu, Math.min(2, mb.getComponentCount()));
-    }
+   
 
     if (windowMenu == null) {
       windowMenu = createWindowMenu(v);
-    } else {
+    } 
       mb.add(windowMenu);
-    }
+   
 
     if (helpMenu == null) {
       helpMenu = createHelpMenu(v);
-    } else {
+    } 
       mb.add(helpMenu);
-    }
+    
 
     return mb;
   }
