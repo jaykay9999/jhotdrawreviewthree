@@ -525,64 +525,54 @@ public class AttributeKeys {
    * the shape.
    */
  public static double growthCalculation(FillUnderStroke fillUnderStroke, StrokePlacement placement, double strokeWidth) {
-    double grow;
+    double insideFactor;
+    double outsideFactor;
+    double centerFactor;
 
     switch (fillUnderStroke) {
         case FULL:
-            switch (placement) {
-                case INSIDE:
-                    grow = 0f;
-                    break;
-                case OUTSIDE:
-                    grow = strokeWidth;
-                    break;
-                case CENTER:
-                default:
-                    grow = strokeWidth / 2d;
-                    break;
-            }
+            insideFactor = 0f;
+            outsideFactor = strokeWidth;
+            centerFactor = strokeWidth / 2d;
             break;
         case NONE:
-            switch (placement) {
-                case INSIDE:
-                    grow = -strokeWidth;
-                    break;
-                case OUTSIDE:
-                    grow = 0f;
-                    break;
-                case CENTER:
-                default:
-                    grow = strokeWidth / -2d;
-                    break;
-            }
+            insideFactor = -strokeWidth;
+            outsideFactor = 0f;
+            centerFactor = strokeWidth / -2d;
             break;
         case CENTER:
         default:
-            switch (placement) {
-                case INSIDE:
-                    grow = strokeWidth / -2d;
-                    break;
-                case OUTSIDE:
-                    grow = strokeWidth / 2d;
-                    break;
-                case CENTER:
-                default:
-                    grow = 0d;
-                    break;
-            }
+            insideFactor = strokeWidth / -2d;
+            outsideFactor = strokeWidth / 2d;
+            centerFactor = 0d;
+            break;
+    }
+
+    double grow;
+    switch (placement) {
+        case INSIDE:
+            grow = insideFactor;
+            break;
+        case OUTSIDE:
+            grow = outsideFactor;
+            break;
+        case CENTER:
+        default:
+            grow = centerFactor;
             break;
     }
 
     return grow;
 }
 
-  public static double getPerpendicularFillGrowth(Figure f, double factor) {
+public static double getPerpendicularFillGrowth(Figure f, double factor) {
     double strokeWidth = AttributeKeys.getStrokeTotalWidth(f, factor);
     StrokePlacement placement = f.attr().get(STROKE_PLACEMENT);
     FillUnderStroke fillUnderStroke = f.attr().get(FILL_UNDER_STROKE);
 
     return growthCalculation(fillUnderStroke, placement, strokeWidth);
 }
+
 
 
   /**
