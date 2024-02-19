@@ -33,10 +33,10 @@ public class DrawingColorIcon extends javax.swing.ImageIcon {
    * @param colorShape The shape to be drawn with the color of the default attribute.
    */
   public DrawingColorIcon(
-      final DrawingEditor editor,
-      final AttributeKey<Color> key,
-      final URL imageLocation,
-      final Shape colorShape) {
+      DrawingEditor editor,
+      AttributeKey<Color> key,
+      URL imageLocation,
+      Shape colorShape) {
     super(imageLocation);
     this.editor = editor;
     this.key = key;
@@ -44,10 +44,10 @@ public class DrawingColorIcon extends javax.swing.ImageIcon {
   }
 
   public DrawingColorIcon(
-      final DrawingEditor editor,
-      final AttributeKey<Color> key,
-      final Image image,
-      final Shape colorShape) {
+      DrawingEditor editor,
+      AttributeKey<Color> key,
+      Image image,
+      Shape colorShape) {
     super(image);
     this.editor = editor;
     this.key = key;
