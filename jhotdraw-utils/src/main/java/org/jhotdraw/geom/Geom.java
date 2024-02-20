@@ -622,8 +622,8 @@ public final class Geom {
   /**
    * Resizes the Rectangle2D both horizontally and vertically.
    *
-   * <p>This method modifies the Rectangle2D.Double so that it is horizontal expansion units larger
-   * on both the left and right side, and vertical expansion units larger at both the top and
+   * <p>This method modifies the 2 dimentional Rectangle so that it is horizontalExpansion units larger
+   * on both the left and right side, and verticalExpansion units larger at both the top and
    * bottom.
    *
    * <p>The new 2 dimentional Rectangle grows if horizontalExpansion and verticalExpansion are positive,
