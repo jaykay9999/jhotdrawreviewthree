@@ -20,9 +20,9 @@ import org.jhotdraw.draw.*;
 public class DrawingColorIcon extends javax.swing.ImageIcon {
 
   private static final long serialVersionUID = 1L;
-  private DrawingEditor editor;
-  private AttributeKey<Color> key;
-  private Shape colorShape;
+  private final DrawingEditor editor;
+  private final AttributeKey<Color> key;
+  private final Shape colorShape;
 
   /**
    * Creates a new instance.
@@ -33,7 +33,10 @@ public class DrawingColorIcon extends javax.swing.ImageIcon {
    * @param colorShape The shape to be drawn with the color of the default attribute.
    */
   public DrawingColorIcon(
-      DrawingEditor editor, AttributeKey<Color> key, URL imageLocation, Shape colorShape) {
+      DrawingEditor editor,
+      AttributeKey<Color> key,
+      URL imageLocation,
+      Shape colorShape) {
     super(imageLocation);
     this.editor = editor;
     this.key = key;
@@ -41,7 +44,10 @@ public class DrawingColorIcon extends javax.swing.ImageIcon {
   }
 
   public DrawingColorIcon(
-      DrawingEditor editor, AttributeKey<Color> key, Image image, Shape colorShape) {
+      DrawingEditor editor,
+      AttributeKey<Color> key,
+      Image image,
+      Shape colorShape) {
     super(image);
     this.editor = editor;
     this.key = key;
@@ -49,7 +55,8 @@ public class DrawingColorIcon extends javax.swing.ImageIcon {
   }
 
   @Override
-  public void paintIcon(java.awt.Component c, java.awt.Graphics gr, int x, int y) {
+  public void paintIcon(
+      final java.awt.Component c, final java.awt.Graphics gr, final int x, final int y) {
     Graphics2D g = (Graphics2D) gr;
     super.paintIcon(c, g, x, y);
     if (editor != null) {
