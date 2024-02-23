@@ -73,24 +73,29 @@ public class PertPanel extends JPanel {
     // FIXME - We need a toggle grid action
     // pb.addSeparator();
     // pb.add(new ToggleGridAction(editor));
-    JMenu m = new JMenu(labels.getString("view.zoomFactor.text"));
-    JRadioButtonMenuItem rbmi;
-    ButtonGroup group = new ButtonGroup();
-
-    m.add(rbmi = new JRadioButtonMenuItem(new ZoomAction(editor, 0.1, null)));
-    group.add(rbmi);
-    for (double zoomLevel = 0.25; zoomLevel <= 4.0; zoomLevel += 0.25) {
-      if (zoomLevel == 1.0) {
-        m.add(rbmi = new JRadioButtonMenuItem(new ZoomAction(editor, zoomLevel, null)));
-        rbmi.setSelected(true);
-        group.add(rbmi);
-      } else {
-        m.add(rbmi = new JRadioButtonMenuItem(new ZoomAction(editor, zoomLevel, null)));
-        group.add(rbmi);
-      }
+    final double ZOOM_START = 0.25;
+    final double ZOOM_END = 4.0;
+    final double ZOOM_INCREMENT = 0.25;
+    
+    JMenu zoomMenu = new JMenu(labels.getString("view.zoomFactor.text"));
+    JRadioButtonMenuItem radioButtonMenuItem;
+    ButtonGroup zoomGroup = new ButtonGroup();
+    
+    zoomMenu.add(radioButtonMenuItem = new JRadioButtonMenuItem(new ZoomAction(editor, 0.1, null)));
+    zoomGroup.add(radioButtonMenuItem);
+    
+    for (double zoomLevel = ZOOM_START; zoomLevel <= ZOOM_END; zoomLevel += ZOOM_INCREMENT) {
+        radioButtonMenuItem = new JRadioButtonMenuItem(new ZoomAction(editor, zoomLevel, null));
+        if (zoomLevel == 1.0) {
+            radioButtonMenuItem.setSelected(true);
+        }
+        zoomMenu.add(radioButtonMenuItem);
+        zoomGroup.add(radioButtonMenuItem);
     }
 
-    pb.add(m);
+
+
+    pb.add(zoomMenu);
     pb.setFocusable(false);
     creationToolbar.addSeparator();
     creationToolbar.add(pb);
