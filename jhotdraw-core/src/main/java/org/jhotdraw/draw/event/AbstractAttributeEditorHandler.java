@@ -321,8 +321,7 @@ public abstract class AbstractAttributeEditorHandler<T> implements Disposable {
 
   protected void updateAttributeEditor() {
 
-    int updateDepthIncreased = updateDepth++;
-    if (updateDepthIncreased == 0) {
+    if (updateDepth++ == 0) {
       Set<Figure> figures = getEditedFigures();
       if (editor == null) {
         attributeEditor.getComponent().setEnabled(false);
@@ -352,8 +351,7 @@ public abstract class AbstractAttributeEditorHandler<T> implements Disposable {
 
   @SuppressWarnings("unchecked")
   protected void updateFigures() {
-    int updateDepthIncreased = updateDepth++;
-    if (updateDepthIncreased == 0) {
+    if (updateDepth++ == 0) {
       Set<Figure> figures = getEditedFigures();
       if (activeView == null || figures.isEmpty()) {
       } else {
