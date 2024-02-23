@@ -164,15 +164,13 @@ public class DefaultDrawing extends AbstractDrawing {
 
       int inFrontOf = obj.size();
       for (Figure f : getFiguresFrontToBack()) {
-        if (inFrontOf == 0) {
-          if (f.isVisible() && f.contains(p)) {
+        if (inFrontOf == 0 && f.isVisible() && f.contains(p)) {
             return f;
-          }
-        } else {
-          if (obj.contains(f)) {
+        }  
+        if (inFrontOf != 0 && obj.contains(f)) {
             inFrontOf--;
-          }
         }
+
       }
       return null;
     }
