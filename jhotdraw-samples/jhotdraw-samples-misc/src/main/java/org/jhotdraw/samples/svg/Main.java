@@ -28,14 +28,17 @@ public class Main {
     ResourceBundleUtil.setVerbose(true);
     Application app;
     String os = System.getProperty("os.name").toLowerCase();
-    if (os.startsWith("mac")) {
-      app = new OSXApplication();
-    } else if (os.startsWith("win")) {
-      //  app = new MDIApplication();
-      app = new SDIApplication();
+    
+    // Check for Mac OS. The use of 'contains' instead of 'startsWith' ensures
+    // broader compatibility with different Mac OS naming conventions.
+    if (os.contains("mac")) {
+        app = new OSXApplication();
     } else {
-      app = new SDIApplication();
+        // Default to SDIApplication for non-Mac OSes, including Windows.
+        // Specific check for Windows OS is not needed as SDIApplication is the default.
+        app = new SDIApplication();
     }
+
     SVGApplicationModel model = new SVGApplicationModel();
     model.setName("JHotDraw SVG");
     model.setVersion(Main.class.getPackage().getImplementationVersion());
