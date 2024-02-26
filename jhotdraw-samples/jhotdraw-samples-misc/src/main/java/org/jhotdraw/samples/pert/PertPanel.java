@@ -73,31 +73,29 @@ public class PertPanel extends JPanel {
     // FIXME - We need a toggle grid action
     // pb.addSeparator();
     // pb.add(new ToggleGridAction(editor));
-    JMenu m = new JMenu(labels.getString("view.zoomFactor.text"));
-    JRadioButtonMenuItem rbmi;
-    ButtonGroup group = new ButtonGroup();
-    m.add(rbmi = new JRadioButtonMenuItem(new ZoomAction(editor, 0.1, null)));
-    group.add(rbmi);
-    m.add(rbmi = new JRadioButtonMenuItem(new ZoomAction(editor, 0.25, null)));
-    group.add(rbmi);
-    m.add(rbmi = new JRadioButtonMenuItem(new ZoomAction(editor, 0.5, null)));
-    group.add(rbmi);
-    m.add(rbmi = new JRadioButtonMenuItem(new ZoomAction(editor, 0.75, null)));
-    group.add(rbmi);
-    m.add(rbmi = new JRadioButtonMenuItem(new ZoomAction(editor, 1.0, null)));
-    rbmi.setSelected(true);
-    group.add(rbmi);
-    m.add(rbmi = new JRadioButtonMenuItem(new ZoomAction(editor, 1.25, null)));
-    group.add(rbmi);
-    m.add(rbmi = new JRadioButtonMenuItem(new ZoomAction(editor, 1.5, null)));
-    group.add(rbmi);
-    m.add(rbmi = new JRadioButtonMenuItem(new ZoomAction(editor, 2, null)));
-    group.add(rbmi);
-    m.add(rbmi = new JRadioButtonMenuItem(new ZoomAction(editor, 3, null)));
-    group.add(rbmi);
-    m.add(rbmi = new JRadioButtonMenuItem(new ZoomAction(editor, 4, null)));
-    group.add(rbmi);
-    pb.add(m);
+    final double ZOOM_START = 0.25;
+    final double ZOOM_END = 4.0;
+    final double ZOOM_INCREMENT = 0.25;
+    
+    JMenu zoomMenu = new JMenu(labels.getString("view.zoomFactor.text"));
+    JRadioButtonMenuItem radioButtonMenuItem;
+    ButtonGroup zoomGroup = new ButtonGroup();
+    
+    zoomMenu.add(radioButtonMenuItem = new JRadioButtonMenuItem(new ZoomAction(editor, 0.1, null)));
+    zoomGroup.add(radioButtonMenuItem);
+    
+    for (double zoomLevel = ZOOM_START; zoomLevel <= ZOOM_END; zoomLevel += ZOOM_INCREMENT) {
+        radioButtonMenuItem = new JRadioButtonMenuItem(new ZoomAction(editor, zoomLevel, null));
+        if (zoomLevel == 1.0) {
+            radioButtonMenuItem.setSelected(true);
+        }
+        zoomMenu.add(radioButtonMenuItem);
+        zoomGroup.add(radioButtonMenuItem);
+    }
+
+
+
+    pb.add(zoomMenu);
     pb.setFocusable(false);
     creationToolbar.addSeparator();
     creationToolbar.add(pb);
